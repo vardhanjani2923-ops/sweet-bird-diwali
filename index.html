@@ -1,101 +1,212 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#160b25">
-<title>A Diwali Surprise for Sweet Bird</title>
+<title>A Diwali Surprise for Prarthana</title>
 <style>
-  * { box-sizing: border-box; }
-  body {
-    margin: 0; min-height: 100vh; padding: 24px;
-    display: grid; place-items: center; overflow-x: hidden;
-    color: #fff7e8; text-align: center;
-    font-family: Georgia, "Times New Roman", serif;
-    background:
-      radial-gradient(ellipse at 50% 20%, rgba(131,53,111,.55), transparent 55%),
-      radial-gradient(ellipse at 50% 100%, rgba(180,83,20,.25), transparent 55%),
-      linear-gradient(145deg, #10091c, #281238 55%, #10091c);
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  overflow-x: hidden;
+  color: #fff7e8;
+  text-align: center;
+  font-family: Georgia, serif;
+  background: radial-gradient(ellipse at 50% 20%, rgba(131,53,111,.55), transparent 55%),
+  linear-gradient(145deg, #10091c, #281238 55%, #10091c);
+}
+
+.card {
+  width: min(100%, 520px);
+  padding: 34px 25px;
+  border: 1px solid rgba(255,218,145,.38);
+  border-radius: 28px;
+  background: rgba(22,10,34,.68);
+  box-shadow: 0 18px 70px rgba(0,0,0,.35);
+}
+
+.diya {
+  font-size: 76px;
+  filter: drop-shadow(0 0 18px #ffad32);
+  animation: flicker 1.8s infinite alternate;
+}
+
+h1 {
+  color: #ffda91;
+  font-size: clamp(2rem, 8vw, 2.8rem);
+  margin: 14px 0;
+}
+
+.intro, .message {
+  color: #f8e6d0;
+  font-size: 1.08rem;
+  line-height: 1.85;
+}
+
+button {
+  margin-top: 24px;
+  border: 0;
+  border-radius: 999px;
+  padding: 15px 25px;
+  color: #38152c;
+  background: linear-gradient(110deg, #ffb43e, #ffe7a8);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(255,177,58,.38);
+}
+
+#surprise {
+  display: none;
+  margin-top: 28px;
+  animation: reveal 1.2s ease both;
+}
+
+#surprise.show { display: block; }
+
+.heart {
+  font-size: 42px;
+  animation: heartbeat 1.1s infinite;
+}
+
+.sign {
+  color: #ffda91;
+  font-size: 1.45rem;
+  margin-top: 22px;
+}
+
+.spark {
+  position: fixed;
+  top: -30px;
+  z-index: 2;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes flicker {
+  from { transform: scale(.98); }
+  to { transform: scale(1.04); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.18); }
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(420deg);
+    opacity: 0;
   }
-  .card {
-    width: min(100%, 520px); padding: 34px 25px;
-    border: 1px solid rgba(255,218,145,.38);
-    border-radius: 28px;
-    background: rgba(22,10,34,.68);
-    box-shadow: 0 18px 70px rgba(0,0,0,.35), inset 0 0 35px rgba(255,190,90,.06);
-    backdrop-filter: blur(8px);
-  }
-  .diya { font-size: 76px; filter: drop-shadow(0 0 18px #ffad32); animation: flicker 1.8s infinite alternate; }
-  h1 { color: #ffda91; font-size: clamp(2rem, 8vw, 2.8rem); margin: 14px 0; }
-  .intro, .message { color: #f8e6d0; font-size: 1.08rem; line-height: 1.85; }
-  button {
-    margin-top: 24px; border: 0; border-radius: 999px; padding: 15px 25px;
-    color: #38152c; background: linear-gradient(110deg, #ffb43e, #ffe7a8);
-    font-size: 1rem; font-weight: bold; cursor: pointer;
-    box-shadow: 0 0 24px rgba(255,177,58,.38);
-  }
-  button:focus-visible { outline: 3px solid white; outline-offset: 4px; }
-  #surprise { display: none; margin-top: 28px; animation: reveal 1.2s ease both; }
-  #surprise.show { display: block; }
-  .heart { font-size: 42px; animation: heartbeat 1.1s infinite; }
-  .sign { color: #ffda91; font-size: 1.45rem; margin-top: 22px; }
-  .spark {
-    position: fixed; top: -30px; z-index: 2; pointer-events: none;
-    animation: fall linear forwards;
-  }
-  @keyframes flicker { from { transform: scale(.98); } to { transform: scale(1.04); } }
-  @keyframes reveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes heartbeat { 50% { transform: scale(1.18); } }
-  @keyframes fall { to { transform: translateY(110vh) rotate(420deg); opacity: 0; } }
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
-  }
+}
 </style>
 </head>
-<body>
-  <main class="card">
-    <div class="diya" aria-hidden="true">🪔</div>
-    <h1>Hey, Sweet Bird 🕊️</h1>
-    <p class="intro">A little Diwali surprise has been made just for you…</p>
-    <button id="openBtn" type="button">Open your surprise ✨</button>
 
-    <section id="surprise" aria-live="polite">
-      <div class="heart" aria-hidden="true">💖</div>
-      <h1>For You, Sweet Bird</h1>
-      <p class="message">
-        May your Diwali be filled with warm lights, happy moments
-        and countless reasons to smile.<br><br>
-        Some people make an ordinary day feel a little brighter
-        just by being themselves. I hope this festival brings
-        that same brightness back to you, today and always. ✨<br><br>
-        Keep smiling and keep shining!
-      </p>
-      <h2 style="color:#ffda91;">Happy Diwali! 🪔</h2>
-      <p class="sign">With warm wishes,<br><strong>Vardhan 😉</strong></p>
-    </section>
-  </main>
+<body>
+
+<main class="card">
+
+  <div class="diya">🪔</div>
+
+  <h1>Hey, Prarthana ❤️</h1>
+
+  <p class="intro">
+    A little Diwali surprise has been made just for you…
+  </p>
+
+  <button id="openBtn" type="button">
+    Open your surprise ✨
+  </button>
+
+  <section id="surprise" aria-live="polite">
+
+    <div class="heart">💖</div>
+
+    <h1>For You, Prarthana ❤️</h1>
+
+    <p class="message">
+
+      May your Diwali be filled with warm lights,
+      happy moments and countless reasons to smile.
+
+      <br><br>
+
+      Some people make an ordinary day feel
+      a little brighter just by being themselves.
+
+      I hope this festival brings that same
+      brightness back to you, today and always. ✨
+
+      <br><br>
+
+      Keep smiling and keep shining!
+
+    </p>
+
+    <h2 style="color:#ffda91;">
+      Happy Diwali, Prarthana! 🪔
+    </h2>
+
+    <p class="sign">
+      With warm wishes,<br>
+      <strong>Vardhan 😉</strong>
+    </p>
+
+  </section>
+
+</main>
 
 <script>
-  const openBtn = document.getElementById("openBtn");
-  const surprise = document.getElementById("surprise");
 
-  openBtn.addEventListener("click", () => {
-    surprise.classList.add("show");
-    openBtn.hidden = true;
+const openBtn = document.getElementById("openBtn");
+const surprise = document.getElementById("surprise");
 
-    const symbols = ["✨", "⭐", "💛", "🎇", "🌸"];
-    for (let i = 0; i < 55; i++) {
-      const spark = document.createElement("span");
-      spark.className = "spark";
-      spark.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-      spark.style.left = Math.random() * 100 + "vw";
-      spark.style.fontSize = (13 + Math.random() * 17) + "px";
-      spark.style.animationDuration = (2.5 + Math.random() * 3) + "s";
-      spark.style.animationDelay = (Math.random() * .8) + "s";
-      document.body.appendChild(spark);
-      window.setTimeout(() => spark.remove(), 7000);
-    }
-  });
+openBtn.addEventListener("click", () => {
+
+  surprise.classList.add("show");
+  openBtn.hidden = true;
+
+  const symbols = ["✨", "⭐", "💛", "🎇", "🌸"];
+
+  for (let i = 0; i < 55; i++) {
+
+    const spark = document.createElement("span");
+
+    spark.className = "spark";
+
+    spark.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    spark.style.left = Math.random() * 100 + "vw";
+
+    spark.style.fontSize =
+      (13 + Math.random() * 17) + "px";
+
+    spark.style.animationDuration =
+      (2.5 + Math.random() * 3) + "s";
+
+    spark.style.animationDelay =
+      (Math.random() * .8) + "s";
+
+    document.body.appendChild(spark);
+
+    setTimeout(() => spark.remove(), 7000);
+  }
+
+});
+
 </script>
+
 </body>
 </html>
